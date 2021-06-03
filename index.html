@@ -6,6 +6,7 @@
 		<title>My App a count</title>
 		<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	</head>
 	<body>
 		<div class="w-full h-screen flex flex-col justify-center items-center">
@@ -16,18 +17,50 @@
 					e aproveite os recursos que preparamos pra você.
 				</p>
 				
-				<div class="flex flex-row justify-left items-center mt-10">
-					<a href="" class="bg-green-500 text-white text-lg font-semibold px-5 py-2 rounded shadow">
-						<i class="fab fa-android"></i>
+				<div class="flex flex-col md:flex-row justify-left items-center mt-10">
+					<a href="" id="android" class="bg-green-500 text-white text-lg font-semibold px-5 py-4 rounded-full shadow md:w-52 w-full text-center">
+						<i class="fab fa-android pr-3 text-2xl"></i>
 						Android
 					</a>
-					<a href="" class="bg-purple-500 text-white text-lg font-semibold px-5 py-2 rounded shadow ml-3">
-						<i class="fab fa-apple"></i>
+					<a href="" id="ios" class="bg-purple-500 text-white text-lg font-semibold px-5 py-4 rounded-full shadow mt-4 md:mt-0 ml-0 md:ml-3 md:w-52 w-full text-center">
+						<i class="fab fa-apple pr-3 text-2xl"></i>
 						IOS
 					</a>
 				</div>	
 			</div>
-			
 		</div>
 	</body>
+	<script type="text/javascript">
+		
+		let android = document.getElementById('android');
+		let ios = document.getElementById('ios');
+		
+		function sucess_download() {
+			swal({
+				title: "Download",
+				text: "Seu download foi efetuado com sucesso.",
+				icon: "success"
+			})
+		}
+
+		function error_ios() {
+			swal({
+				title: "Erro",
+				text: "Desculpe mas ainda não desponibilizamos para IOS.",
+				icon: "warning"
+			})
+		}
+
+		
+		android.addEventListener('click', (event) => {
+			event.preventDefault()
+			setTimeout(sucess_download, 2000)
+		})
+
+		ios.addEventListener('click', (event) => {
+			event.preventDefault()
+			setTimeout(error_ios, 1000)
+		})
+		
+	</script>
 </html>
